@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule,
         MatSelectModule,
-        MatButtonModule} from '@angular/material';
+        MatButtonModule,
+        MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatFormFieldModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

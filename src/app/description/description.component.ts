@@ -16,22 +16,13 @@ export class DescriptionComponent implements OnInit {
 
   ngOnInit() {
     this.questDesc = this.fb.group({
-      challengeTitle : ['',
-      [Validators.required]],
-      challengeDesc : ['',
-      [Validators.required]],
-      problemStat : ['',
-      [Validators.required]],
-      inputFormat : ['',
-      [Validators.required]],
-      constraints : ['',
-      [Validators.required]],
-      outputFormat : ['',
-      [Validators.required]],
-      maxScore : ['',
-      [Validators.required,
-      Validators.min(5),
-      Validators.max(100)]],
+      challengeTitle : ['', [Validators.required]],
+      challengeDesc : ['', [Validators.required]],
+      problemStat : ['', [Validators.required]],
+      inputFormat : ['', [Validators.required]],
+      constraints : ['', [Validators.required]],
+      outputFormat : ['', [Validators.required]],
+      maxScore : ['', [Validators.required, Validators.min(5), Validators.max(100)]],
       maxRuntime : ['', Validators.required],
       progLang : ['', Validators.required],
       level : ['', Validators.required]
@@ -46,6 +37,17 @@ export class DescriptionComponent implements OnInit {
 
   get inFormat() { return this.questDesc.get('inputFormat'); }
 
+  get constraints() { return this.questDesc.get('constraints'); }
+
+  get outFormat() { return this.questDesc.get('outputFormat'); }
+
+  get maxScore() { return this.questDesc.get( 'maxScore' ); }
+
+  get maxRuntime() { return this.questDesc.get('maxRuntime'); }
+
+  get progLang() { return this.questDesc.get('progLang'); }
+
+  get level() { return this.questDesc.get('level'); }
 
   onSubmit() {
     if (this.questDesc.invalid) {
