@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ChallengeService } from '../challenge.service';
 
 @Component({
   selector: 'app-description',
@@ -8,7 +9,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class DescriptionComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private questService: ChallengeService) {}
 
   availbLang = [ 'Java' ];
 
@@ -16,6 +17,7 @@ export class DescriptionComponent implements OnInit {
 
   ngOnInit() {
     this.questDesc = this.fb.group({
+      id : ['', [Validators.required]],
       challengeTitle : ['', [Validators.required]],
       challengeDesc : ['', [Validators.required]],
       problemStat : ['', [Validators.required]],
@@ -25,9 +27,13 @@ export class DescriptionComponent implements OnInit {
       maxScore : ['', [Validators.required, Validators.min(5), Validators.max(100)]],
       maxRuntime : ['', Validators.required],
       progLang : ['', Validators.required],
-      level : ['', Validators.required]
+      solutionUrl : ['', Validators.required],
+      level : ['', Validators.required],
+      rating : ['', Validators.required]
     });
   }
+
+  get id() {return this.questDesc.get('id'); }
 
   get title() { return this.questDesc.get('challengeTitle'); }
 
@@ -47,7 +53,11 @@ export class DescriptionComponent implements OnInit {
 
   get progLang() { return this.questDesc.get('progLang'); }
 
+  get solutionUrl() { return this.questDesc.get('solutionUrl'); }
+
   get level() { return this.questDesc.get('level'); }
+
+  get rating() { return this.questDesc.get('rating'); }
 
   onSubmit() {
     if (this.questDesc.invalid) {
@@ -55,6 +65,10 @@ export class DescriptionComponent implements OnInit {
     }
     console.log(this.questDesc.value);
     alert('The form was submitted');
+    this.questService.createChallenge(this.questDesc.value)
+      .subscribe(data => {
+        console.log('POST Success');
+      });
     this.questDesc.reset();
   }
 
