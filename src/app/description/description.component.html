@@ -1,0 +1,81 @@
+<div class="quest-container">
+  <form class="quest-container" [formGroup]="questDesc" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="legacy">
+      <input matInput placeholder="Challenge Title" formControlName="challengeTitle"
+        required>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Challenge Title shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Challenge Description" class="form-control" id="description" formControlName="challengeDesc"
+        required></textarea>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Challenge Description shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Problem Statement" class="form-control" id="statement" formControlName="problemStat"
+        required></textarea>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Problem Statement shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Input Format</mat-label>
+      <textarea matInput placeholder="Input Format" class="form-control" id="inFormat" formControlName="inputFormat"
+        required></textarea>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Input Format shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Constraints</mat-label>
+      <textarea matInput placeholder="Constraints" class="form-control" id="constr" formControlName="constraints"
+        required></textarea>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Constraints shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Output Format</mat-label>
+      <textarea matInput placeholder="Output Format" class="form-control" id="outFormat" formControlName="outputFormat"
+        required></textarea>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Output Format shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max Score</mat-label>
+      <input matInput placeholder="Maximum Score" class="form-control" id="maxScore" formControlName="maxScore"
+        required>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Max Score shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max Runtime Allowed</mat-label>
+      <input matInput placeholder="Maximum Runtime Allowed" class="form-control" id="maxRuntime" formControlName="maxRuntime"
+        required>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Max Runtime Allowed shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Language</label>
+      <mat-select class="form-control" id="lang" formControlName="progLang" required>
+        <mat-option *ngFor="let lan of availbLang" [value]="lan">
+          {{ lan }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Level</mat-label>
+      <input type="text" placeholder="Level" class="form-control" id="lvl" formControlName="level" required>
+      <mat-error *ngIf="questDesc.get('challengeTitle').invalid && (questDesc.get('challengeTitle').dirty || questDesc.get('challengeTitle').touched)">
+        Level shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Submit</button>
+  </form>
+</div>
